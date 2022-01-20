@@ -20,6 +20,21 @@ class AppWidget extends StatelessWidget {
       theme: ThemeData(
         primaryColor: kPrimaryColor,
         scaffoldBackgroundColor: kBgColor,
+        colorScheme: const ColorScheme(
+          primary: kPrimaryColor,
+          primaryVariant: kPrimaryColor,
+          secondary: kSecondaryColor,
+          secondaryVariant: kSecondaryColor,
+          surface: kBgColor,
+          background: kBgColor,
+          error: Colors.red,
+          onPrimary: kPrimaryColor,
+          onSecondary: kPrimaryColor,
+          onSurface: kPrimaryColor,
+          onBackground: kPrimaryColor,
+          onError: kPrimaryColor,
+          brightness: Brightness.light,
+        ),
       ),
     ).modular();
   }
