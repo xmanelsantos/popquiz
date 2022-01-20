@@ -1,16 +1,17 @@
-# popquiz
+# Pop Quiz
 
-A new Flutter project.
+Aplicativo em desenvolvimento para processo seletivo para Desenvolvedor de aplicativos móveis, Checkmob.
 
-## Getting Started
+## Iniciando
+A príncipio foi estabelecido uma organização do projeto utilizando o slidy e a gerência de rotas com o Modular, ambos desenvolvidos pela a Flutterando.
 
-This project is a starting point for a Flutter application.
+## Layout do App (UI)
+O próximo passo foi escolher as cores e desenvolver todo o protótipo do layout, utilizei para essa etapa elementos nativos do Flutter e para fontes o pacote do Google Fonts.
 
-A few resources to get you started if this is your first Flutter project:
+## Pacotes
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+- [Slidy](https://pub.dev/packages/slidy)
+- [Modular](https://pub.dev/packages/flutter_modular)
+- [Google Fonts](https://pub.dev/packages/google_fonts)
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Mais informações ao decorrer do desenvolvimento.
