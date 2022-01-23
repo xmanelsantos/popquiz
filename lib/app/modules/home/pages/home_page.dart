@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:popquiz/app/animation/fade_animation.dart';
+import 'package:popquiz/app/modules/quiz/models/result_manager.dart';
 import 'package:popquiz/constants/constants.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -13,72 +16,99 @@ class HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
-    return Scaffold(
-      appBar: _appBarHome(),
-      body: _bodyHome(size, 'Manel'),
-    );
+    return Consumer<ResultManager>(
+        builder: (_, resultManager, __) => Scaffold(
+              appBar: _appBarHome(),
+              body: SingleChildScrollView(
+                child: FadeAnimation(
+                  delay: 1.5,
+                  child: _bodyHome(size, resultManager),
+                ),
+              ),
+            ));
   }
 
-  Column _bodyHome(Size size, String nome) {
+  Column _bodyHome(Size size, ResultManager resultManager) {
     return Column(
       children: [
-        _headerHome(size, nome),
+        _headerHome(size, resultManager),
         const SizedBox(height: kDefaultPadding * 3),
         _titleWithBackground('Histórico de Questionários'),
         const SizedBox(height: kDefaultPadding * 3),
-        historicCard(title: 'Informações pessoais', onPressed: () {}),
+        historicCard(
+            title: 'Informações pessoais',
+            onPressed: () {},
+            resultManager: resultManager),
+        Text(
+          resultManager.allResults.isEmpty
+              ? 'Nenhum resultado encontrado'
+              : '${resultManager.allResults.length} resultados encontrados',
+          textAlign: TextAlign.center,
+          style: GoogleFonts.lato(
+            fontSize: size.width * 0.035,
+            color: Colors.black38,
+          ),
+        ),
+        const SizedBox(height: kDefaultPadding * 3),
       ],
     );
   }
 
-  Container historicCard({required String title, required Function onPressed}) {
+  Consumer historicCard(
+      {required String title,
+      required Function onPressed,
+      required ResultManager resultManager}) {
     final Size size = MediaQuery.of(context).size;
-    return Container(
-        height: size.height * 0.3,
-        width: size.width * 0.5,
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(20),
-          boxShadow: [
-            BoxShadow(
-              offset: const Offset(3, 10),
-              blurRadius: 15,
-              color: kPrimaryColor.withOpacity(0.23),
-            ),
-            const BoxShadow(
-              offset: Offset(-3, -10),
-              blurRadius: 20,
-              color: Colors.white,
-            ),
-          ],
-        ),
-        margin: const EdgeInsets.all(kDefaultPadding * 2),
-        padding: const EdgeInsets.all(kDefaultPadding * 2),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            const CircleAvatar(
-              backgroundColor: kAlternativeColor,
-              radius: 80,
-              child: Icon(
-                Icons.history,
-                color: kPrimaryColor,
-                size: 40,
+    return Consumer<ResultManager>(builder: (_, resultManager, __) {
+      return Container(
+          height: size.height * 0.3,
+          width: size.width * 0.5,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(20),
+            boxShadow: [
+              BoxShadow(
+                offset: const Offset(3, 10),
+                blurRadius: 15,
+                color: kPrimaryColor.withOpacity(0.23),
               ),
-            ),
-            Text(
-              'Informações pessoais',
-              style: GoogleFonts.lato(
-                fontSize: 22,
-                fontWeight: FontWeight.bold,
+              const BoxShadow(
+                offset: Offset(-3, -10),
+                blurRadius: 20,
+                color: Colors.white,
               ),
-            ),
-            _titleWithBackground('Mais detalhes')
-          ],
-        ));
+            ],
+          ),
+          margin: const EdgeInsets.all(kDefaultPadding * 2),
+          padding: const EdgeInsets.all(kDefaultPadding * 2),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              CircleAvatar(
+                backgroundColor: kAlternativeColor,
+                radius: size.width * 0.1,
+                child: Icon(
+                  Icons.history,
+                  color: kPrimaryColor,
+                  size: size.width * 0.1,
+                ),
+              ),
+              Text(
+                resultManager.allResults.first.title,
+                textAlign: TextAlign.center,
+                style: GoogleFonts.lato(
+                  fontSize: size.width * 0.05,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              _titleWithBackground('Mais detalhes'),
+            ],
+          ));
+    });
   }
 
   Container _titleWithBackground(String title) {
+    final Size size = MediaQuery.of(context).size;
     return Container(
       padding: const EdgeInsets.symmetric(
           horizontal: kDefaultPadding * 2, vertical: kDefaultPadding),
@@ -95,8 +125,9 @@ class HomePageState extends State<HomePage> {
       ),
       child: Text(
         title,
+        textAlign: TextAlign.center,
         style: GoogleFonts.lato(
-          fontSize: 20,
+          fontSize: size.width * 0.04,
           fontWeight: FontWeight.w600,
           color: kPrimaryColor,
         ),
@@ -104,7 +135,7 @@ class HomePageState extends State<HomePage> {
     );
   }
 
-  Stack _headerHome(Size size, String nome) {
+  Stack _headerHome(Size size, ResultManager resultManager) {
     return Stack(
       children: [
         Container(
@@ -126,19 +157,20 @@ class HomePageState extends State<HomePage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const CircleAvatar(
-                radius: 100,
+              CircleAvatar(
+                radius: size.width * 0.2,
                 backgroundColor: kPrimaryColor,
                 child: Icon(
                   Icons.person,
-                  size: 100,
+                  size: size.width * 0.2,
                   color: kAlternativeColor,
                 ),
               ),
               const SizedBox(height: kDefaultPadding * 2),
-              Text('Olá, $nome !',
+              Text('Olá, ${resultManager.allResults.first.answers[1]} !',
+                  maxLines: 1,
                   style: GoogleFonts.lato(
-                    fontSize: 26,
+                    fontSize: size.width * 0.05,
                     fontWeight: FontWeight.bold,
                     fontStyle: FontStyle.italic,
                     color: kBgLightColor,
