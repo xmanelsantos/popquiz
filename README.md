@@ -2,6 +2,9 @@
 
 Aplicativo em desenvolvimento para processo seletivo para Desenvolvedor de aplicativos móveis, Checkmob.
 
+## IMPORTANTE
+Há dois branches, ao terminar toda a parte do layout com o app totalmente funcionando, criei um backup e coloquei ele como main, o outro branch foi nomeado como old e tem todos os outros commits relacionados ao processo.
+
 ## Iniciando
 A príncipio foi estabelecido uma organização do projeto utilizando o slidy e a gerência de rotas com o Modular, ambos desenvolvidos pela a Flutterando.
 
@@ -26,27 +29,10 @@ Tentei seguir a mesma estrutura a ser salva, para exibir no histórico:
 Cada questionário respondido aparecerá no histórico na página principal, lá conseguimos ver cada pergunta e a resposta que foi colocado, como também a data e o horário que foi respondido.
 
 ## Escolher, responder e visualizar
-Na página inicial há um botão para respondermos outro quiz, lá mostra o tema e a quantidade de questões, lindo e funcionando, mas nem tudo é flores. O próximo passo é ler um quiz por uma requisição de uma API, essa requisição passará todos os quiz disponíveis para o app, é meu primeiro contato com teste assim e provavelmente levará um tempo pra fixar. Usarei esse modelo de JSON para receber: 
+Na página inicial há um botão para respondermos outro quiz, lá mostra o tema e a quantidade de questões, lindo e funcionando, mas nem tudo é flores. O próximo passo é ler um quiz por uma requisição de uma API, essa requisição passará todos os quiz disponíveis para o app, é meu primeiro contato com teste assim e provavelmente levará um tempo pra fixar. Usarei JSON.
 
- >{
-    "id": "1",
-    "questionario": {
-      "id": 1,
-      "titulo": "Preferências pessoais",
-      "questoes": [
-        {
-          "id": 1,
-          "titulo": "Livro favorito",
-          "descricao": "Qual é o livro que você mais gostou até hoje?"
-        },
-        {
-          "id": 2,
-          "titulo": "Filme favorito",
-          "descricao": "Qual é o filme que você mais gostou até hoje?"
-        }
-      ]
-    }
-  }
+
+
 
 
 ## Etapas
