@@ -22,14 +22,14 @@ class _MoreQuizPageState extends State<MoreQuizPage> {
     Result result = Result();
     Size size = MediaQuery.of(context).size;
     return Consumer<QuizManager>(builder: (_, quizManager, __) {
-      Quiz quiz = quizManager.selectedQuiz;
+      FormatedQuiz quiz = quizManager.selectedQuiz;
 
       return Scaffold(
         appBar: AppBar(
           backgroundColor: kSecondaryColor,
           iconTheme: const IconThemeData(color: kBgLightColor),
           title: Text(
-            quiz.title,
+            quiz.questionario!.titulo as String,
             style: GoogleFonts.lato(
               fontSize: 20,
               color: kBgLightColor,
@@ -43,7 +43,7 @@ class _MoreQuizPageState extends State<MoreQuizPage> {
               Expanded(
                 child: ListView.builder(
                   physics: const BouncingScrollPhysics(),
-                  itemCount: quiz.questions.length,
+                  itemCount: quiz.questionario!.questoes!.length,
                   itemBuilder: (_, index) {
                     return Padding(
                       padding: const EdgeInsets.symmetric(
@@ -60,7 +60,8 @@ class _MoreQuizPageState extends State<MoreQuizPage> {
                         onSaved: (newValue) {
                           result.answers.add(newValue as String);
 
-                          result.questions.add(quiz.questions[index].question);
+                          result.questions.add(quiz.questionario!
+                              .questoes![index].descricao as String);
                         },
                         textAlign: TextAlign.center,
                         style: GoogleFonts.lato(
@@ -69,8 +70,10 @@ class _MoreQuizPageState extends State<MoreQuizPage> {
                           fontStyle: FontStyle.italic,
                         ),
                         decoration: _inputDecorationQuiz(
-                          label: quiz.questions[index].question,
-                          hint: quiz.questions[index].description,
+                          label: quiz.questionario!.questoes![index].descricao
+                              as String,
+                          hint: quiz.questionario!.questoes![index].titulo
+                              as String,
                         ),
                       ),
                     );
@@ -107,7 +110,7 @@ class _MoreQuizPageState extends State<MoreQuizPage> {
                         onTap: () {
                           if (_formKey.currentState!.validate()) {
                             _formKey.currentState!.save();
-                            result.title = quiz.title;
+                            result.title = quiz.questionario!.titulo as String;
                             result.id = quiz.id.toString();
                             result.createdAt = DateTime.now();
                             resultManager.addResult(result);

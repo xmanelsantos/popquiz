@@ -15,85 +15,13 @@ class NewQuizPage extends StatefulWidget {
 }
 
 class NewQuizPageState extends State<NewQuizPage> {
-  List<Quiz> quizzes = [
-    Quiz(
-      id: 0,
-      title: 'Quiz 1',
-      questions: [
-        Question(
-          id: 1,
-          question: 'Qual seu filme favorito ?',
-          description: 'Filme favorito',
-        ),
-        Question(
-          id: 2,
-          question: 'Qual seu livro favorito ?',
-          description: 'Livro favorito',
-        ),
-        Question(
-          id: 1,
-          question: 'Qual seu filme favorito ?',
-          description: 'Filme favorito',
-        ),
-        Question(
-          id: 2,
-          question: 'Qual seu livro favorito ?',
-          description: 'Livro favorito',
-        ),
-        Question(
-          id: 1,
-          question: 'Qual seu filme favorito ?',
-          description: 'Filme favorito',
-        ),
-        Question(
-          id: 2,
-          question: 'Qual seu livro favorito ?',
-          description: 'Livro favorito',
-        ),
-        Question(
-          id: 1,
-          question: 'Qual seu filme favorito ?',
-          description: 'Filme favorito',
-        ),
-        Question(
-          id: 2,
-          question: 'Qual seu livro favorito ?',
-          description: 'Livro favorito',
-        ),
-        Question(
-          id: 1,
-          question: 'Qual seu filme favorito ?',
-          description: 'Filme favorito',
-        ),
-        Question(
-          id: 2,
-          question: 'Qual seu livro favorito ?',
-          description: 'Livro favorito',
-        ),
-      ],
-    ),
-    Quiz(
-      id: 1,
-      title: 'Quiz 2',
-      questions: [
-        Question(
-          id: 1,
-          question: 'Qual seu filme favorito ?',
-          description: 'Filme favorito',
-        ),
-        Question(
-          id: 2,
-          question: 'Qual seu livro favorito ?',
-          description: 'Livro favorito',
-        ),
-      ],
-    ),
-  ];
+  List<FormatedQuiz> quizzes = [];
 
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
     return Consumer<QuizManager>(builder: (_, quizManager, __) {
+      quizzes = quizManager.quizzes;
       return Scaffold(
         appBar: AppBar(
           backgroundColor: kSecondaryColor,
@@ -153,7 +81,7 @@ class NewQuizPageState extends State<NewQuizPage> {
                           ),
                           const SizedBox(height: kDefaultPadding * 0.5),
                           Text(
-                            quizzes[index].title,
+                            quizzes[index].questionario!.titulo as String,
                             style: GoogleFonts.lato(
                               fontSize: size.width * 0.05,
                               color: kPrimaryColor,
@@ -161,9 +89,9 @@ class NewQuizPageState extends State<NewQuizPage> {
                           ),
                           const SizedBox(height: kDefaultPadding * 0.5),
                           Text(
-                            quizzes[index].questions.length > 1
-                                ? '${quizzes[index].questions.length} perguntas'
-                                : '${quizzes[index].questions.length} pergunta',
+                            quizzes[index].questionario!.questoes!.length > 1
+                                ? '${quizzes[index].questionario!.questoes!.length} perguntas'
+                                : '${quizzes[index].questionario!.questoes!.length} pergunta',
                             style: GoogleFonts.lato(
                               fontSize: size.width * 0.04,
                               color: Colors.black54,
