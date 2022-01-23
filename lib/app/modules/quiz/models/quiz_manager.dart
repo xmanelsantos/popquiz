@@ -7,7 +7,7 @@ import 'package:popquiz/app/modules/quiz/models/quiz.dart';
 
 class QuizManager extends ChangeNotifier {
   QuizManager() {
-    _loadQuizzes();
+    loadQuizzes();
   }
 
   List<FormatedQuiz> quizzes = [];
@@ -18,7 +18,7 @@ class QuizManager extends ChangeNotifier {
 
   late FormatedQuiz selectedQuiz;
 
-  _loadQuizzes() async {
+  loadQuizzes() async {
     final response = await _client.get(Uri.parse(_baseUrl));
     final List<dynamic> quizJson = json.decode(response.body);
     quizzes =

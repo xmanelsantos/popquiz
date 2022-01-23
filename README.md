@@ -31,7 +31,25 @@ Cada questionário respondido aparecerá no histórico na página principal, lá
 ## Escolher, responder e visualizar
 Na página inicial há um botão para respondermos outro quiz, lá mostra o tema e a quantidade de questões, lindo e funcionando, mas nem tudo é flores. O próximo passo é ler um quiz por uma requisição de uma API, essa requisição passará todos os quiz disponíveis para o app, é meu primeiro contato com teste assim e provavelmente levará um tempo pra fixar. Usarei JSON.
 
+## TESTANDO JSON, 1, 2, 3...
+Finalmente podemos receber os questionários por API com JSON, a url base está de uma API test [Mockapi.io](https://mockapi.io/), está operante e funcional! Entretanto percebi algo, de alguma forma a API retorna palavras com acentos bugadas. Porém conseguimos acessar, ler e responder esses questionários, estou muito feliz com minha primeira experiência com API.
 
+## Considerações finais
+Todos os objetivos foram alcançados, embora há muita coisa que pode ser adicionada, muitas delas apenas visuais ou de experiência a, o que notei que pode ser adicionado:
+
+ - [ ] Organizar histórico de questionários do último respondido ao primeiro.
+ - [ ] Não mostrar questionários já respondidos.
+ - [ ] Editar e ou exluir questionários respondidos
+ - [ ] Refresh na página de novos questionários
+ E muito mais...
+
+Cada projeto aprendo mais, esse terminei em um bom tempo e não fiquei trancado ao que já sabia, explorei o Hive e Requisições API, amei tudo isso.
+
+Adicionarei um ícone e uma splash screen assim que possível.
+
+Deixei alguns questionários para teste.
+
+O modelo de API e a base está no model do Quiz.
 
 
 
@@ -40,7 +58,7 @@ Na página inicial há um botão para respondermos outro quiz, lá mostra o tema
 - [X] Responder novo quiz
 - [X] Escolher novo quiz
 - [X] Histórico do quiz respondido
-- [ ] Leitura por API dos questionários
+- [X] Leitura por API dos questionários
 
 ## Pacotes
 
@@ -49,5 +67,6 @@ Na página inicial há um botão para respondermos outro quiz, lá mostra o tema
 - [Google Fonts](https://pub.dev/packages/google_fonts)
 - [Hive](https://pub.dev/packages/hive)
 - [Provider](https://pub.dev/packages/provider)
+- [Http](https://pub.dev/packages/html)
 
-Mais informações ao decorrer do desenvolvimento.
+Etapas principais concluídas e testadas.

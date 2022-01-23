@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:popquiz/app/animation/fade_animation.dart';
+import 'package:popquiz/app/modules/quiz/models/quiz_manager.dart';
 import 'package:popquiz/app/modules/quiz/models/result.dart';
 import 'package:popquiz/app/modules/quiz/models/result_manager.dart';
 import 'package:popquiz/constants/constants.dart';
@@ -219,31 +220,34 @@ class HomePageState extends State<HomePage> {
         Positioned(
             bottom: 0,
             left: kDefaultPadding,
-            child: InkWell(
-              onTap: () {
-                Modular.to.pushNamed('/new/');
-              },
-              child: Container(
-                height: size.width * 0.18,
-                width: size.width * 0.18,
-                decoration: const BoxDecoration(
-                  color: kAlternativeColor,
-                  borderRadius: BorderRadius.all(Radius.circular(60)),
-                  boxShadow: [
-                    BoxShadow(
-                      color: kPrimaryColor,
-                      offset: Offset(2, -2),
-                      blurRadius: 10,
-                    ),
-                  ],
+            child: Consumer<QuizManager>(builder: (_, quizManager, __) {
+              return InkWell(
+                onTap: () {
+                  quizManager.loadQuizzes();
+                  Modular.to.pushNamed('/new/');
+                },
+                child: Container(
+                  height: size.width * 0.18,
+                  width: size.width * 0.18,
+                  decoration: const BoxDecoration(
+                    color: kAlternativeColor,
+                    borderRadius: BorderRadius.all(Radius.circular(60)),
+                    boxShadow: [
+                      BoxShadow(
+                        color: kPrimaryColor,
+                        offset: Offset(2, -2),
+                        blurRadius: 10,
+                      ),
+                    ],
+                  ),
+                  child: Icon(
+                    Icons.add_rounded,
+                    size: size.width * 0.1,
+                    color: kPrimaryColor,
+                  ),
                 ),
-                child: Icon(
-                  Icons.add_rounded,
-                  size: size.width * 0.1,
-                  color: kPrimaryColor,
-                ),
-              ),
-            ))
+              );
+            }))
       ],
     );
   }
