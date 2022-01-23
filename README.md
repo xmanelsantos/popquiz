@@ -22,6 +22,8 @@ Tentei seguir a mesma estrutura a ser salva, para exibir no histórico:
     4. Lista com as perguntas respectivamente
     5. Data de criação
 
+## Detalhes de um questionário respondido
+Cada questionário respondido aparecerá no histórico na página principal, lá conseguimos ver cada pergunta e a resposta que foi colocado, como também a data e o horário que foi respondido.
 
 ## Pacotes
 

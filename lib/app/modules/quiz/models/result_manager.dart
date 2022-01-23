@@ -11,6 +11,8 @@ class ResultManager extends ChangeNotifier {
 
   List<Result> allResults = [];
 
+  Result selectedResult = Result();
+
   _startResults() async {
     await Hive.openBox('results');
     box = Hive.box('results');
@@ -37,6 +39,11 @@ class ResultManager extends ChangeNotifier {
     if (allResults == null) {
       allResults = [];
     }
+    notifyListeners();
+  }
+
+  setSelectResult(Result result) {
+    selectedResult = result;
     notifyListeners();
   }
 }

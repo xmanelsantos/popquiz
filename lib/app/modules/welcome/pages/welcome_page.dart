@@ -69,8 +69,8 @@ class WelcomePageState extends State<WelcomePage> {
                     child: SizedBox(
                       width: size.width * 0.8,
                       height: size.height * 0.5,
-                      child: Image.network(
-                        "https://firebasestorage.googleapis.com/v0/b/flutterbricks-public.appspot.com/o/3d%20icons%2Ftext-dynamic-color.png?alt=media&token=8b150ad7-c1fd-457f-bf84-0c3a0ea9fb7e",
+                      child: Image.asset(
+                        "assets/images/text.png",
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -108,7 +108,7 @@ class WelcomePageState extends State<WelcomePage> {
                                 resultManager.allResults == null) {
                               Modular.to.pushNamed('/quiz');
                             } else {
-                              Modular.to.pushNamed('/home/');
+                              Modular.to.navigate('/home/');
                             }
                           },
                           child: Container(

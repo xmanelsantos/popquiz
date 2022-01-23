@@ -178,7 +178,7 @@ class QuizPageState extends State<QuizPage> {
                   result.id = '0';
                   result.createdAt = DateTime.now();
                   resultManager.addResult(result);
-                  Modular.to.navigate('/home');
+                  Modular.to.navigate('/home/');
                 }
               },
               child: Container(

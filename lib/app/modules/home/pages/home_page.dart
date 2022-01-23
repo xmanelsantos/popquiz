@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:popquiz/app/animation/fade_animation.dart';
 import 'package:popquiz/app/modules/quiz/models/result_manager.dart';
@@ -36,10 +37,20 @@ class HomePageState extends State<HomePage> {
         _titleWithBackground('Histórico de Questionários'),
         const SizedBox(height: kDefaultPadding * 3),
         historicCard(
-            title: 'Informações pessoais',
-            onPressed: () {},
+            onPressed: () {
+              resultManager.setSelectResult(resultManager.allResults.first);
+              Modular.to.pushNamed('details');
+            },
             resultManager: resultManager),
         _lengthResults(resultManager, size),
+        const SizedBox(height: kDefaultPadding / 2),
+        Text(
+          'Agradecemos a sua participação!',
+          style: GoogleFonts.roboto(
+            fontSize: size.width * 0.035,
+            color: Colors.black38,
+          ),
+        ),
         const SizedBox(height: kDefaultPadding * 3),
       ],
     );
@@ -61,55 +72,56 @@ class HomePageState extends State<HomePage> {
   }
 
   Consumer historicCard(
-      {required String title,
-      required Function onPressed,
-      required ResultManager resultManager}) {
+      {required Function() onPressed, required ResultManager resultManager}) {
     final Size size = MediaQuery.of(context).size;
     return Consumer<ResultManager>(builder: (_, resultManager, __) {
-      return Container(
-          height: size.height * 0.3,
-          width: size.width * 0.5,
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(20),
-            boxShadow: [
-              BoxShadow(
-                offset: const Offset(3, 10),
-                blurRadius: 15,
-                color: kPrimaryColor.withOpacity(0.23),
-              ),
-              const BoxShadow(
-                offset: Offset(-3, -10),
-                blurRadius: 20,
-                color: Colors.white,
-              ),
-            ],
-          ),
-          margin: const EdgeInsets.all(kDefaultPadding * 2),
-          padding: const EdgeInsets.all(kDefaultPadding * 2),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              CircleAvatar(
-                backgroundColor: kAlternativeColor,
-                radius: size.width * 0.1,
-                child: Icon(
-                  Icons.history,
-                  color: kPrimaryColor,
-                  size: size.width * 0.1,
+      return InkWell(
+        onTap: onPressed,
+        child: Container(
+            height: size.height * 0.3,
+            width: size.width * 0.5,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(20),
+              boxShadow: [
+                BoxShadow(
+                  offset: const Offset(3, 10),
+                  blurRadius: 15,
+                  color: kPrimaryColor.withOpacity(0.23),
                 ),
-              ),
-              Text(
-                resultManager.allResults.first.title,
-                textAlign: TextAlign.center,
-                style: GoogleFonts.lato(
-                  fontSize: size.width * 0.05,
-                  fontWeight: FontWeight.bold,
+                const BoxShadow(
+                  offset: Offset(-3, -10),
+                  blurRadius: 20,
+                  color: Colors.white,
                 ),
-              ),
-              _titleWithBackground('Mais detalhes'),
-            ],
-          ));
+              ],
+            ),
+            margin: const EdgeInsets.all(kDefaultPadding * 2),
+            padding: const EdgeInsets.all(kDefaultPadding * 2),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                CircleAvatar(
+                  backgroundColor: kAlternativeColor,
+                  radius: size.width * 0.1,
+                  child: Icon(
+                    Icons.history,
+                    color: kPrimaryColor,
+                    size: size.width * 0.1,
+                  ),
+                ),
+                Text(
+                  resultManager.allResults.first.title,
+                  textAlign: TextAlign.center,
+                  style: GoogleFonts.lato(
+                    fontSize: size.width * 0.05,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                _titleWithBackground('Mais detalhes'),
+              ],
+            )),
+      );
     });
   }
 
@@ -221,6 +233,7 @@ class HomePageState extends State<HomePage> {
       elevation: 0,
       backgroundColor: kSecondaryColor,
       centerTitle: true,
+      iconTheme: const IconThemeData(color: kBgLightColor),
       title: Text(
         'Pop Quiz',
         style: GoogleFonts.lato(
