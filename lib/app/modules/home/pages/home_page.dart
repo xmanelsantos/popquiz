@@ -39,18 +39,24 @@ class HomePageState extends State<HomePage> {
             title: 'Informações pessoais',
             onPressed: () {},
             resultManager: resultManager),
-        Text(
-          resultManager.allResults.isEmpty
-              ? 'Nenhum resultado encontrado'
-              : '${resultManager.allResults.length} resultados encontrados',
-          textAlign: TextAlign.center,
-          style: GoogleFonts.lato(
-            fontSize: size.width * 0.035,
-            color: Colors.black38,
-          ),
-        ),
+        _lengthResults(resultManager, size),
         const SizedBox(height: kDefaultPadding * 3),
       ],
+    );
+  }
+
+  Text _lengthResults(ResultManager resultManager, Size size) {
+    return Text(
+      resultManager.allResults.isEmpty
+          ? 'Nenhum resultado encontrado'
+          : resultManager.allResults.length == 1
+              ? '1 resultado encontrado'
+              : '${resultManager.allResults.length} resultados encontrados',
+      textAlign: TextAlign.center,
+      style: GoogleFonts.lato(
+        fontSize: size.width * 0.035,
+        color: Colors.black38,
+      ),
     );
   }
 
