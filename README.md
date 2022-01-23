@@ -29,24 +29,24 @@ Cada questionário respondido aparecerá no histórico na página principal, lá
 Na página inicial há um botão para respondermos outro quiz, lá mostra o tema e a quantidade de questões, lindo e funcionando, mas nem tudo é flores. O próximo passo é ler um quiz por uma requisição de uma API, essa requisição passará todos os quiz disponíveis para o app, é meu primeiro contato com teste assim e provavelmente levará um tempo pra fixar. Usarei esse modelo de JSON para receber: 
 
  >{
-    >"id": "1",
-    >"questionario": {
-      >"id": 1,
-      >"titulo": "Preferências pessoais",
-      >"questoes": [
-        >{
-          >"id": 1,
-          >"titulo": "Livro favorito",
-          >"descricao": "Qual é o livro que você mais gostou até hoje?"
-        >},
-        >{
-          >"id": 2,
-          >"titulo": "Filme favorito",
-          >"descricao": "Qual é o filme que você mais gostou até hoje?"
-        >}
-      >]
-    >}
-  >}
+    "id": "1",
+    "questionario": {
+      "id": 1,
+      "titulo": "Preferências pessoais",
+      "questoes": [
+        {
+          "id": 1,
+          "titulo": "Livro favorito",
+          "descricao": "Qual é o livro que você mais gostou até hoje?"
+        },
+        {
+          "id": 2,
+          "titulo": "Filme favorito",
+          "descricao": "Qual é o filme que você mais gostou até hoje?"
+        }
+      ]
+    }
+  }
 
 
 ## Etapas
