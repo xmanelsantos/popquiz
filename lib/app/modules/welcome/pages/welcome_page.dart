@@ -106,7 +106,7 @@ class WelcomePageState extends State<WelcomePage> {
                           onTap: () {
                             if (resultManager.allResults.isEmpty ||
                                 resultManager.allResults == null) {
-                              Modular.to.pushNamed('/quiz/first/');
+                              Modular.to.pushNamed('/quiz/first');
                             } else {
                               Modular.to.navigate('/home/');
                             }

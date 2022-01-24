@@ -19,11 +19,11 @@ Fiz uma interação com o usuário explicando como funciona os quizzes, o primei
 
 ## Estrutura dos Quiz
 Tentei seguir a mesma estrutura a ser salva, para exibir no histórico:
-    1. Id
-    2. Título do Questionário
-    3. Lista com as respostas
-    4. Lista com as perguntas respectivamente
-    5. Data de criação
+    1. Id.
+    2. Título do Questionário.
+    3. Lista com as respostas.
+    4. Lista com as perguntas respectivamente.
+    5. Data de criação.
 
 ## Detalhes de um questionário respondido
 Cada questionário respondido aparecerá no histórico na página principal, lá conseguimos ver cada pergunta e a resposta que foi colocado, como também a data e o horário que foi respondido.
@@ -35,13 +35,14 @@ Na página inicial há um botão para respondermos outro quiz, lá mostra o tema
 Finalmente podemos receber os questionários por API com JSON, a url base está de uma API test [Mockapi.io](https://mockapi.io/), está operante e funcional! Entretanto percebi algo, de alguma forma a API retorna palavras com acentos bugadas. Porém conseguimos acessar, ler e responder esses questionários, estou muito feliz com minha primeira experiência com API.
 
 ## Considerações finais
-Todos os objetivos foram alcançados, embora há muita coisa que pode ser adicionada, muitas delas apenas visuais ou de experiência a, o que notei que pode ser adicionado:
+Todos os objetivos foram alcançados, embora há muita coisa que pode ser adicionada, muitas delas apenas visuais ou de experiência ao usuário, o que notei que pode ser adicionado:
 
  - [ ] Organizar histórico de questionários do último respondido ao primeiro.
  - [ ] Não mostrar questionários já respondidos.
- - [ ] Editar e ou exluir questionários respondidos
- - [ ] Refresh na página de novos questionários
- E muito mais...
+ - [ ] Editar e ou exluir questionários respondidos.
+ - [ ] Refresh na página de novos questionários.
+
+E muito mais...
 
 Cada projeto aprendo mais, esse terminei em um bom tempo e não fiquei trancado ao que já sabia, explorei o Hive e Requisições API, amei tudo isso.
 
