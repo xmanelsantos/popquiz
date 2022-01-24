@@ -1,6 +1,6 @@
 # Pop Quiz
 
-Aplicativo em desenvolvimento para processo seletivo para Desenvolvedor de aplicativos móveis, Checkmob.
+Aplicativo desenvolvido para processo seletivo para Desenvolvedor de aplicativos móveis, Checkmob.
 
 ## Screenshots
 ![alt text](https://github.com/xmanelsantos/popquiz/blob/main/screenshot/all-images-with-shadows.png?raw=true)
