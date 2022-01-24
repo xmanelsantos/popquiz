@@ -2,6 +2,8 @@
 
 Aplicativo em desenvolvimento para processo seletivo para Desenvolvedor de aplicativos móveis, Checkmob.
 
+## Screenshots
+![alt text](https://github.com/xmanelsantos/popquiz/blob/main/screenshot/all-images-with-shadows.png?raw=true)
 ## IMPORTANTE
 Há dois branches, ao terminar toda a parte do layout com o app totalmente funcionando, criei um backup e coloquei ele como main, o outro branch foi nomeado como old e tem todos os outros commits relacionados ao processo.
 
